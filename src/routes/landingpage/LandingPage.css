@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .navbar{
     display: flex;
     align-items: center;
@@ -18,7 +11,7 @@
     margin-left: auto;
 }
 
-a{
+.navbtn a, .signbtn{
     padding: 1em 5em;
     color: #658cc2;
     text-decoration: none;
@@ -30,7 +23,7 @@ a{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-a:focus, a:hover{
+.navbtn a:focus, .navbtn a:hover{
     border: 1px solid #054bb4;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -45,20 +38,20 @@ a:focus, a:hover{
     padding: 1em;
 }
 
-h1{
+ h1{
     color: #333436;
     font-size: 50px;
     font-weight: 800;
     padding: .5em 0;
 }
 
-p{
+ p{
     font-weight: 500;
     padding: 1em 0;
     font-size: 20px;
 }
 
-.btn{
+.signbtn{
     background-color: #054bb4;
     color: white;
 }
@@ -83,11 +76,11 @@ p{
         font-size: 32px;
     }
     
-    a{
+    .navbtn a, .signbtn{
         padding: 2em 7em;
     }
 
-    img2{
+    .img2{
         width: 800px;
         height: 100%;
     }
@@ -95,7 +88,7 @@ p{
 
 
 @media (max-width: 550px) {
-   button{
+   .navbtn a, .signbtn{
     padding: 1em 2em;
     z-index: 2;
    }
@@ -129,7 +122,8 @@ p{
     display: none;
    }
 
-   .btn{
+   
+   .signbtn{
     padding: 2em 5em;
    }
 }
@@ -141,7 +135,7 @@ p{
     justify-content: space-between;
    }
 
-   button{
+   .navbtn a, .signbtn{
     margin-bottom: 1em;
    }
 }

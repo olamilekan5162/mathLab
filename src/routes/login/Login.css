@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.main-body{
+    background-color: #ffffff67;
+    font-family: "Roboto", serif;
+    background-image: url(/src/assets/Mathnw.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100vh;
+    background-position: center;
+    background-blend-mode: lighten;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-body .container{
+    background-color: rgba(255, 255, 255, 0.801);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    margin: 1em;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.login{
+    margin-bottom:1em;
+}
+
+.main{
+    width: 80%;
+    margin: 1em 0;
+}
+
+.login input{
+    width: 100%;
+    padding: 1.5em 2em;
+    margin-bottom: 2em;
+    cursor: text;
+    background-color: #f8f8f8;
+    border: 1px solid #d3d3d3;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
+.btn button{
+    background-color: #054bb4;
+    width: 50%;
+    padding: 1em 0;
+    margin-bottom: 2em;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 800;
+    border: 1px solid #054bb4;
+    border-radius: .5em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn button:hover{
+    opacity: .9;
+}

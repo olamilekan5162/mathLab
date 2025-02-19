@@ -11,6 +11,11 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   
+  const submitForm = (e) => {
+    e.preventDefault()
+    alert("registration successful")
+  }
+  
     return(
         <section className="container">
         <div className="header">

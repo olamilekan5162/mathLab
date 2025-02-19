@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .container{
     width: 50%;
     margin: 0 auto;
@@ -62,11 +55,11 @@ hr{
     text-align: center;
 }
 
-fieldset{
+.main fieldset{
     border: none;
 }
 
-input{
+.main input{
     width: 100%;
     padding: 1.5em 2em;
     margin: 1em 0;
@@ -88,7 +81,7 @@ input{
     margin: 1em 0 2em 0;
 }
 
-button{
+.sign button{
     background-color: #054bb4;
     padding: 1em 5em;
     color: #fff;
@@ -99,11 +92,14 @@ button{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:hover{
+.sign button:hover{
     opacity: .9;
 }
 
 .footer{
     text-align: center;
     margin: 2em 0;
+}
+.footer a {
+  text-decoration: none;
 }

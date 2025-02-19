@@ -26,7 +26,7 @@ const LandingPage = () => {
                   </div>
       
                   <div>
-                      <Link className="btn" to="/register">Sign Up</Link>
+                      <Link className="signbtn" to="/register">Sign Up</Link>
                   </div>
               </div>
       
