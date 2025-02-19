@@ -6,6 +6,7 @@ import './Dashboard.css'
 import { auth } from "../../../firebaseConfig.js"
 import { signOut } from "firebase/auth"
 import { useNavigate, useParams } from 'react-router-dom'
+import Spinner from '../../components/Spinner';
 
 const Dashboard = () => {
   const {displayName} = useParams()

@@ -55,7 +55,7 @@ const Register = () => {
   }
   
     return(
-        <section className="container">
+        <section className="main-container">
         <div className="header">
             <div className="logo"> <img src={Mathnw} alt="our logo" /></div>
               {success && <p className="success">{success}</p>}
