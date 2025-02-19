@@ -6,6 +6,7 @@ import {useState} from "react"
 import { auth } from "../../../firebaseConfig.js"
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
+import Spinner from '../../components/Spinner';
 
 const Register = () => {
   
@@ -16,11 +17,13 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(null)
+  const [loading, setLoading] = useState(false) 
   
   const navigate = useNavigate()
   
   const submitForm = (e) => {
     e.preventDefault()
+    setLoading(true)
     if(password !== confirmPassword){
       setError("Password does not match")
       return
@@ -33,17 +36,20 @@ const Register = () => {
       })
       .then(() => {
         setSuccess("Profile created successfully, proceed to Login")
+        setLoading(false)
         setTimeout(() => {
           return navigate("/login")
         }, 2000)
       })
       .catch((error) => {
         setError(`Account creation failed, try again ${error}`)
+        setLoading(false)
       })
     })
     .catch((error) => {
       const errorCode = error.code;
       setError(`Account creation failed, try again", ${errorCode}`)
+      setLoading(false)
     });
     
   }
@@ -102,7 +108,8 @@ const Register = () => {
 
                 <div className="sign">
                     <p>By clicking Sign Up, you agree to our Terms</p>
-                    <button type="submit">Sign Up</button>
+                    <button type="submit">
+                      {loading ? <Spinner loading={loading}/> : "Sign up"}</button>
                 </div>
                 <hr />
             </form>
