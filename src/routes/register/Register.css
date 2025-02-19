@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.logo{
+    padding: 1em 0;
+    display: flex;
+    justify-content: center;
+}
+
+.google-signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    background-color: #4387ee;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.google-signup a{
+    text-decoration: none;
+    color: white;
+}
+
+.card{
+    max-width: 30px;
+    background-color: white;
+}
+
+.line{
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 2em 0 1em 0;
+}
+
+hr{
+    flex-grow: 1;
+    height: 2px;
+    border: none;
+    background-color: rgb(194, 192, 192);
+}
+
+.text{
+    width: auto;
+    text-align: center;
+}
+
+fieldset{
+    border: none;
+}
+
+input{
+    width: 100%;
+    padding: 1.5em 2em;
+    margin: 1em 0;
+    cursor: text;
+    background-color: #f8f8f8;
+    border: 1px solid #d3d3d3;
+}
+
+.contact{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
+.sign{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0 2em 0;
+}
+
+button{
+    background-color: #054bb4;
+    padding: 1em 5em;
+    color: #fff;
+    font-weight: 800;
+    border: 1px solid #054bb4;
+    border-radius: .5em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover{
+    opacity: .9;
+}
+
+.footer{
+    text-align: center;
+    margin: 2em 0;
+}
