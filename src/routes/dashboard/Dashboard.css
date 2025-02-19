@@ -36,8 +36,9 @@
     font-style: italic;
 }
 
-h2 {
+h4 {
     width: 100%;
+    font-size: 3rem;
     margin-top: .5em;
     margin-bottom: 2em;
 }

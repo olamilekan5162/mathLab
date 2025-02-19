@@ -22,7 +22,7 @@ const Login = () => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      setError("Login attempt failed", errorCode)
+      setError(`Login attempt failed, ${errorCode}`)
     });
 
   }
@@ -48,7 +48,8 @@ const Login = () => {
                     </div>
                 </div>
             </form>
-                        {error && <p>error</p>}
+            {error && <p>{error}</p>}
+            {success && <p>{success}</p>}
         </div>
     </div>
         )

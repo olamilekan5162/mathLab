@@ -33,15 +33,17 @@ const Register = () => {
       })
       .then(() => {
         setSuccess("Profile created successfully, proceed to Login")
-        return navigate("/login")
+        setTimeout(() => {
+          return navigate("/login")
+        }, 2000)
       })
       .catch((error) => {
-        setError("Account creation failed, try again", errorCode)
+        setError(`Account creation failed, try again ${error}`)
       })
     })
     .catch((error) => {
       const errorCode = error.code;
-      setError("Account creation failed, try again", errorCode)
+      setError(`Account creation failed, try again", ${errorCode}`)
     });
     
   }

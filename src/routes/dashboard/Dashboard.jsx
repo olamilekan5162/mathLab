@@ -5,11 +5,15 @@ import Avatar from '../../assets/avatar.svg'
 import './Dashboard.css'
 import { auth } from "../../../firebaseConfig.js"
 import { signOut } from "firebase/auth"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Dashboard = () => {
+  const {displayName} = useParams()
   const [question, setQuestion] = useState("What is the sum of a large nunber divisible by 4 included in the circumference of a circle What is the sum of a large nunber divisible by 4 included in the circumference of a circle")
-  const [answer, setAnswer] = useState(24)
+  const [answer, setAnswer] = useState("")
+  const [test, setTest] = useState("")
+  
+  const navigate = useNavigate()
   
   const handleSignout = () =>{
     signOut(auth)
@@ -26,6 +30,7 @@ const Dashboard = () => {
   }
   
   const handleSubmit = () => {
+    setTest(answer)
     
   }
     return(
@@ -37,7 +42,7 @@ const Dashboard = () => {
             </div>
             <div>
               <div class="hero">
-                <p>Welcome <span>NAME</span></p>
+                <p>Welcome <span>{displayName}</span></p>
                 <img src={Avatar} alt="avatar" />
               </div>
             </div>
@@ -48,11 +53,11 @@ const Dashboard = () => {
           <div class="mainn">
             <div>
               <h1>Question</h1>
-              <h2>{question}</h2>
+              <h4>{question}</h4>
             </div>
             <div>
               <h1>Your Answer</h1>
-              <textarea name="text" value={answer} onChange={e => setAnswer(e.target.value)}/>
+              <textarea name="text" onChange={e => setAnswer(e.target.value)}></textarea>
             </div>
             <div class="butons">
               <div>
