@@ -1,18 +1,31 @@
 import {useState} from "react"
-import './Login.css'
 import Mathnw from '../../assets/Mathnw.png'
+import { auth } from "../../../firebaseConfig.js"
+import { signInWithEmailAndPassword } from "firebase/auth"
 
 function Login(){
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
+  const [error, setError] = useState(null)
   
   const submitForm = (e) => {
     e.preventDefault()
-    alert("login successful")
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    // Signed in 
+    console.log("login successful")
+    const user = userCredential.user;
+    console.log(user)
+    // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      console.log("unable to login", errorCode)
+      setError(errorCode)
+    });
+
   }
     return(
-      <div className="main-body">
       <div className="container">
         <div className="main">
             <div class="logo">
@@ -28,6 +41,7 @@ function Login(){
                         <div>
                             <input type="password" placeholder="Password" name="Password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
+                        {error && <p>error</p>}
                     </div>
 
                     <div className="btn">
@@ -36,7 +50,6 @@ function Login(){
                 </div>
             </form>
         </div>
-    </div>
     </div>
         )
 }

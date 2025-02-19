@@ -3,6 +3,8 @@ import Mathnw from '../../assets/Mathnw.png'
 import Google from '../../assets/google.svg'
 import {Link} from "react-router-dom"
 import {useState} from "react"
+import { auth } from "../../../firebaseConfig.js"
+import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
 
 const Register = () => {
   const [fname, setFname] = useState("")
@@ -10,10 +12,28 @@ const Register = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  
+  const [error, setError] = useState(null)
   const submitForm = (e) => {
     e.preventDefault()
-    alert("registration successful")
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log("user created successfully")
+    const user = userCredential.user;
+    updateProfile (user, {
+      displayName: `${lname} ${fname}`
+    })
+    .then(() => {
+      console.log("profile updated successfully")
+    })
+    .catch((error) => {
+      console.log("error updating profile", error)
+    })
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      console.log("unable to create account", errorCode)
+    });
+    
   }
   
     return(
@@ -75,7 +95,7 @@ const Register = () => {
         </div>
 
         <div className="footer">
-            <p>Already have an account?<Link to="#"> Log In</Link></p>
+            <p>Already have an account?<Link to="/login"> Log In</Link></p>
         </div>
     </section>
     
