@@ -5,33 +5,43 @@ import {Link} from "react-router-dom"
 import {useState} from "react"
 import { auth } from "../../../firebaseConfig.js"
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  
   const [fname, setFname] = useState("")
   const [lname, setLname] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
+  
+  const navigate = useNavigate()
+  
   const submitForm = (e) => {
     e.preventDefault()
+    if(password !== confirmPassword){
+      setError("Password does not match")
+      return
+    }
     createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    console.log("user created successfully")
-    const user = userCredential.user;
-    updateProfile (user, {
+    .then((userCredential) => {
+      const user = userCredential.user;
+      updateProfile (user, {
       displayName: `${lname} ${fname}`
-    })
-    .then(() => {
-      console.log("profile updated successfully")
-    })
-    .catch((error) => {
-      console.log("error updating profile", error)
-    })
+      })
+      .then(() => {
+        setSuccess("Profile created successfully, proceed to Login")
+        return navigate("/login")
+      })
+      .catch((error) => {
+        setError("Account creation failed, try again", errorCode)
+      })
     })
     .catch((error) => {
       const errorCode = error.code;
-      console.log("unable to create account", errorCode)
+      setError("Account creation failed, try again", errorCode)
     });
     
   }
@@ -40,6 +50,8 @@ const Register = () => {
         <section className="container">
         <div className="header">
             <div className="logo"> <img src={Mathnw} alt="our logo" /></div>
+              {success && <p className="success">{success}</p>}
+              {error && <p className="error">{error}</p>}
 
             <div className="google-signup">
                 <div><img className="card" src={Google} alt="ggl_icon" /></div>

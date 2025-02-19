@@ -2,26 +2,27 @@ import {useState} from "react"
 import Mathnw from '../../assets/Mathnw.png'
 import { auth } from "../../../firebaseConfig.js"
 import { signInWithEmailAndPassword } from "firebase/auth"
+import { useNavigate } from 'react-router-dom'
 
-function Login(){
+const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
+  
+  const navigate = useNavigate()
   
   const submitForm = (e) => {
     e.preventDefault()
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-    // Signed in 
-    console.log("login successful")
     const user = userCredential.user;
-    console.log(user)
-    // ...
+    setSuccess("Login successful")
+    return navigate(`/dashboard/${user.displayName}`)
     })
     .catch((error) => {
       const errorCode = error.code;
-      console.log("unable to login", errorCode)
-      setError(errorCode)
+      setError("Login attempt failed", errorCode)
     });
 
   }
@@ -31,7 +32,6 @@ function Login(){
             <div class="logo">
                 <img src={Mathnw} alt="logo" />
             </div>
-
             <form action="/" onSubmit={submitForm}>
                 <div>
                     <div className="login">
@@ -41,7 +41,6 @@ function Login(){
                         <div>
                             <input type="password" placeholder="Password" name="Password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
-                        {error && <p>error</p>}
                     </div>
 
                     <div className="btn">
@@ -49,6 +48,7 @@ function Login(){
                     </div>
                 </div>
             </form>
+                        {error && <p>error</p>}
         </div>
     </div>
         )

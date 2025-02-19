@@ -10,6 +10,14 @@
     display: flex;
     justify-content: center;
 }
+.success {
+  text-align: center;
+  color: green;
+}
+.error {
+  text-align: center;
+  color: red;
+}
 
 .google-signup{
     display: flex;

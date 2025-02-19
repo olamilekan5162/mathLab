@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.header{
+    background-color: rgba(248, 248, 248, 0.562);
+    padding: 1em;
+    border-bottom:2px solid #054bb4;
+    height: 18vh;
+}
+
+.navbarr{
+    display: flex;
+    align-items: center;
+}
+
+.hero img{
+    max-width: 50px;
+}
+
+.logo{
+    margin-right: auto;
+}
+
+.hero{
+    display: flex;
+    align-items: center;
+    margin: 0 2em;
+}
+
+.hero p{
+    font-size: 1.5em;
+    margin: 0 2em;
+}
+
+.hero span{
+    font-style: italic;
+}
+
+h2 {
+    width: 100%;
+    margin-top: .5em;
+    margin-bottom: 2em;
+}
+textarea{
+    width: 100%;
+    resize: none;
+    padding: 4em;
+    margin-top: .5em;
+    margin-bottom: 2em;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 82vh;
+    background-color: rgb(240, 240, 240);
+}
+
+.mainn{
+    width: 80%;
+}
+
+.butons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.butons button{
+    padding: 1em 2em;
+    font-size: 1.25em;
+    color: white;
+    background-color: #054bb4;
+    font-weight: 800;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 1em;
+    margin-right: 1em;
+    cursor: pointer;
+}
