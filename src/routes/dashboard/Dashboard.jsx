@@ -19,6 +19,7 @@ const Dashboard = () => {
   const [correct, setCorrect] = useState(false)
   const [incorrect, setIncorrect] = useState(false)
   const [correctAnswer, setCorrectAnswer] = useState("")
+  const [difficulty setDifficulty] = useState("")
   
   const navigate = useNavigate()
   
@@ -37,6 +38,21 @@ const fetchQuestions = async () => {
   }
   catch (error) {
     console.log(error)
+  }
+}
+
+const uploadQuestion = async () => {
+  try {
+    const docRef = await addDoc(collection(db, "questions"), {
+      question: "",
+      answer: "",
+      difficulty: "",
+      topic: ""
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } 
+  catch (e) {
+    console.error("Error adding document: ", e);
   }
 }
 
@@ -60,7 +76,7 @@ const handleNext = () => {
   const currentIndex = questions.indexOf(currentQuestion);
   const nextIndex = currentIndex + 1;
     if (nextIndex >= questions.length) {
-      alert("No more questions!");
+      setCurrentQuestion(questions[0])
   } else {
     setCurrentQuestion(questions[nextIndex]);
   }
@@ -110,17 +126,22 @@ const handleSubmit = () => {
                   <div class="radio-button">
                     <div>
                       <label for="child">Easy
-                      <input type="radio" id="child" name="difficulty" value="easy" />
+                      <input type="radio" id="child" name="difficulty" value="easy" onChange={(e) => setDifficulty(e.target.value)} />
                       </label>
                     </div>
                     <div>
                       <label for="adult">Normal
-                      <input type="radio" id="adult" name="difficulty" value="normal" />
+                      <input type="radio" id="adult" name="difficulty" value="normal" onChange={(e) => setDifficulty(e.target.value)}/>
                       </label>
                     </div>
                     <div>
                       <label for="senior">Hard
-                      <input type="radio" id="senior" name="difficulty" value="difficult" />
+                      <input type="radio" id="senior" name="difficulty" value="difficult" onChange={(e) => setDifficulty(e.target.value)}/>
+                      </label>
+                    </div>
+                    <div>
+                      <label for="random">Random
+                      <input type="radio" id="random" name="random" value="random" onChange={(e) => setDifficulty(e.target.value)}/>
                       </label>
                     </div>
                   </div>
