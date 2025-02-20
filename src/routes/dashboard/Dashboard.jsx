@@ -19,13 +19,13 @@ const Dashboard = () => {
   const [correct, setCorrect] = useState(false)
   const [incorrect, setIncorrect] = useState(false)
   const [correctAnswer, setCorrectAnswer] = useState("")
-  const [difficulty, setDifficulty] = useState("")
+  const [difficulty, setDifficulty] = useState("hard")
   
   const navigate = useNavigate()
   
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [difficulty]);
   
 const fetchQuestions = async () => {
   try {
@@ -136,12 +136,12 @@ const handleSubmit = () => {
                     </div>
                     <div>
                       <label for="senior">Hard
-                      <input type="radio" id="senior" name="difficulty" value="difficult" onChange={(e) => setDifficulty(e.target.value)}/>
+                      <input type="radio" id="senior" name="difficulty" value="hard" onChange={(e) => setDifficulty(e.target.value)}/>
                       </label>
                     </div>
                     <div>
                       <label for="random">Random
-                      <input type="radio" id="random" name="random" value="random" onChange={(e) => setDifficulty(e.target.value)}/>
+                      <input type="radio" id="random" name="difficulty" value="random" onChange={(e) => setDifficulty(e.target.value)}/>
                       </label>
                     </div>
                   </div>
