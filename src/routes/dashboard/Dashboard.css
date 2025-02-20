@@ -110,3 +110,13 @@ textarea{
     margin-right: 1em;
     cursor: pointer;
 }
+
+.correct {
+  /* text-align: center; */
+  color: green;
+}
+
+.incorrect {
+  /* text-align: center; */
+  color: red;
+}

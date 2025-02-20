@@ -16,6 +16,9 @@ const Dashboard = () => {
   const [userAnswer, setUserAnswer] = useState("")
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [correct, setCorrect] = useState(false)
+  const [incorrect, setIncorrect] = useState(false)
+  const [correctAnswer, setCorrectAnswer] = useState("")
   
   const navigate = useNavigate()
   
@@ -36,21 +39,26 @@ const fetchQuestions = async () => {
     console.log(error)
   }
 }
+
+const generateQuestion = () => {
+  handleNext()
+  setIncorrect(false)
+  setUserAnswer("")
+}
   
+const handleSignout = () =>{
+  signOut(auth)
+  .then(() => {
+    navigate("/login")
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+}
   
-  const handleSignout = () =>{
-    signOut(auth)
-    .then(() => {
-      navigate("/login")
-    })
-    .catch((error) => {
-      console.log(error)
-    });
-  }
-  
-  const handleNext = () => {
-    const currentIndex = questions.indexOf(currentQuestion);
-    const nextIndex = currentIndex + 1;
+const handleNext = () => {
+  const currentIndex = questions.indexOf(currentQuestion);
+  const nextIndex = currentIndex + 1;
     if (nextIndex >= questions.length) {
       alert("No more questions!");
   } else {
@@ -58,14 +66,21 @@ const fetchQuestions = async () => {
   }
 }
   
-  const handleSubmit = () => {
-    if (!currentQuestion) return;
-    if (userAnswer.trim() === currentQuestion.answer) {
-      alert("Correct!");
-    } else {
-      alert("Incorrect! Generating a new question...");
-    }
+const handleSubmit = () => {
+  if (!currentQuestion) return;
+  if (userAnswer.trim() === currentQuestion.answer) {
+    setCorrect(true)
+    setTimeout(() => {
+      handleNext()
+      setCorrect(false)
+      setUserAnswer("")
+    }, 2000)
+  } else {
+    setCorrectAnswer(currentQuestion.answer)
+    setIncorrect(true)
   }
+}
+
     return(
       <>
         <section class="header">
@@ -119,11 +134,14 @@ const fetchQuestions = async () => {
             </div>
             <div>
               <h1>Your Answer</h1>
-              <textarea name="text" onChange={e => setUserAnswer(e.target.value)}></textarea>
+              <textarea name="text" value={userAnswer} onChange={e => setUserAnswer(e.target.value)}></textarea>
             </div>
+            { correct && <p className="correct">You are Correct!, Keep it up!</p>}
+            { incorrect && <p className="incorrect">{`Incorrect!, the answer is ${correctAnswer} click on Generate to generate new similar Question`}</p> }
+            
             <div class="butons">
               <div>
-                  <button onClick = { handleNext }>Next Question</button>
+                  <button onClick = { generateQuestion }>Generate</button>
                   <button onClick = { handleSubmit } >Submit</button>
               </div>
     
