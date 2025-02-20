@@ -19,7 +19,7 @@ const Dashboard = () => {
   const [correct, setCorrect] = useState(false)
   const [incorrect, setIncorrect] = useState(false)
   const [correctAnswer, setCorrectAnswer] = useState("")
-  const [difficulty setDifficulty] = useState("")
+  const [difficulty, setDifficulty] = useState("")
   
   const navigate = useNavigate()
   
