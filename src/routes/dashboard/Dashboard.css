@@ -36,6 +36,37 @@
     font-style: italic;
 }
 
+.question{
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+label{
+display: flex;
+align-items: center;
+gap: 1em;
+font-size: 1.25em;
+}
+
+input[type="radio"] {
+  transform: scale(2);
+  /* margin-right: 5px; */
+}
+
+
+.button-ui{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
 h4 {
     width: 100%;
     font-size: 3rem;

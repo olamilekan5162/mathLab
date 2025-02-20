@@ -7,14 +7,18 @@ import { auth } from "../../../firebaseConfig.js"
 import { signOut } from "firebase/auth"
 import { useNavigate, useParams } from 'react-router-dom'
 import Spinner from '../../components/Spinner';
+import { db } from "../../../firebaseConfig.js"
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
 const Dashboard = () => {
   const {displayName} = useParams()
-  const [question, setQuestion] = useState("What is the sum of a large nunber divisible by 4 included in the circumference of a circle What is the sum of a large nunber divisible by 4 included in the circumference of a circle")
-  const [answer, setAnswer] = useState("")
-  const [test, setTest] = useState("")
+  const [question, setQuestion] = useState([])
+  const [userAnswer, setUserAnswer] = useState("")
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [loading, setLoading] = useState(false);
   
   const navigate = useNavigate()
+  
   
   const handleSignout = () =>{
     signOut(auth)
@@ -31,7 +35,6 @@ const Dashboard = () => {
   }
   
   const handleSubmit = () => {
-    setTest(answer)
     
   }
     return(
@@ -53,7 +56,32 @@ const Dashboard = () => {
         <section class="wrapper">
           <div class="mainn">
             <div>
-              <h1>Question</h1>
+                  <div class="question">
+                <div>
+                  <h1>Question</h1>
+                </div>
+                <div class="button-ui">
+                  <div><h2>Difficulty:</h2></div>
+    
+                  <div class="radio-button">
+                    <div>
+                      <label for="child">Easy
+                      <input type="radio" id="child" name="difficulty" value="easy" />
+                      </label>
+                    </div>
+                    <div>
+                      <label for="adult">Normal
+                      <input type="radio" id="adult" name="difficulty" value="normal" />
+                      </label>
+                    </div>
+                    <div>
+                      <label for="senior">Hard
+                      <input type="radio" id="senior" name="difficulty" value="difficult" />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <h4>{question}</h4>
             </div>
             <div>

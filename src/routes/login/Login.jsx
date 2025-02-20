@@ -53,7 +53,7 @@ const Login = () => {
                                 </div>
                             </div>
         
-                            <div className="btn-wrap">
+                            <div className="login-btn">
                                 <button type="submit">{loading ? <Spinner loading={loading}/> : "Log in"}</button>
                             </div>
                         </div>
