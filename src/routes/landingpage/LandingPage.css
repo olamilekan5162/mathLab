@@ -23,6 +23,10 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.signbtn-box{
+    margin-top: 2em;
+}
+
 .navbtn a:focus, .navbtn a:hover{
     border: 1px solid #054bb4;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -57,9 +61,8 @@
 }
 
 .img2{
-    max-width: 100%;
-    max-height: 700px;
-    height: auto;
+    max-width: 50vw;
+    height: 70vh;
     display: block;
     border-bottom: 1px solid white;
     border-bottom-right-radius: 1em;

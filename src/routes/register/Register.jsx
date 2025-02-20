@@ -56,7 +56,7 @@ const Register = () => {
   
     return(
         <section className="main-container">
-        <div className="header">
+        <div className="main-container-header">
             <div className="logo"> <img src={Mathnw} alt="our logo" /></div>
               {success && <p className="success">{success}</p>}
               {error && <p className="error">{error}</p>}
@@ -79,7 +79,7 @@ const Register = () => {
 
         </div>
 
-        <div className="main">
+        <div className="main-wrapper">
             <form action="/" onSubmit={submitForm}>
                 <fieldset>
                     <div className="contact">

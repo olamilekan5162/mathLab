@@ -25,7 +25,7 @@ const LandingPage = () => {
                       <p>Challenge yourself and level up your math skills! Sign up for FREE and get AI-generated questions that adapt to your progress in real time!</p>
                   </div>
       
-                  <div>
+                  <div className="signbtn-box">
                       <Link className="signbtn" to="/register">Sign Up</Link>
                   </div>
               </div>

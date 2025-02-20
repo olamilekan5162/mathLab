@@ -97,41 +97,59 @@ const handleSubmit = () => {
   }
 }
 
-    return(
+    return (
       <>
-        <section class="header">
-          <div class="navbarr">
+        <section class="dashboard-container">
+          <div class="dashboard-navbar">
             <div class="logo">
               <img src={Mathnw} alt="Logo" />
             </div>
             <div>
               <div class="hero">
-                <p>Welcome <span>{displayName}</span></p>
+                <p>
+                  Welcome <span>{displayName}</span>
+                </p>
                 <img src={Avatar} alt="avatar" />
               </div>
             </div>
           </div>
         </section>
-    
-        <section class="wrapper">
-          <div class="mainn">
+
+        <section class="dashboard-wrapper">
+          <div class="dashboard-main">
             <div>
-                  <div class="question">
+              <div class="question">
                 <div>
                   <h1>Question</h1>
                 </div>
                 <div class="button-ui">
-                  <div><h2>Difficulty:</h2></div>
-    
+                  <div>
+                    <h2>Difficulty:</h2>
+                  </div>
+
                   <div class="radio-button">
                     <div>
-                      <label for="child">Easy
-                      <input type="radio" id="child" name="difficulty" value="easy" onChange={(e) => setDifficulty(e.target.value)} />
+                      <label for="child">
+                        Easy
+                        <input
+                          type="radio"
+                          id="child"
+                          name="difficulty"
+                          value="easy"
+                          onChange={(e) => setDifficulty(e.target.value)}
+                        />
                       </label>
                     </div>
                     <div>
-                      <label for="adult">Normal
-                      <input type="radio" id="adult" name="difficulty" value="normal" onChange={(e) => setDifficulty(e.target.value)}/>
+                      <label for="adult">
+                        Normal
+                        <input
+                          type="radio"
+                          id="adult"
+                          name="difficulty"
+                          value="normal"
+                          onChange={(e) => setDifficulty(e.target.value)}
+                        />
                       </label>
                     </div>
                     <div>
@@ -147,35 +165,43 @@ const handleSubmit = () => {
                   </div>
                 </div>
               </div>
-              { currentQuestion ? (
+              {currentQuestion ? (
                 <h4>{currentQuestion.question}</h4>
-                ):(
+              ) : (
                 <p>Loading Qestion...</p>
               )}
             </div>
             <div>
               <h1>Your Answer</h1>
-              <textarea name="text" value={userAnswer} onChange={e => setUserAnswer(e.target.value)}></textarea>
+              <textarea
+                name="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+              ></textarea>
             </div>
-            { correct && <p className="correct">You are Correct!, Keep it up!</p>}
-            { incorrect && <p className="incorrect">{`Incorrect!, the answer is ${correctAnswer} click on Generate to generate new similar Question`}</p> }
-            
+            {correct && (
+              <p className="correct">You are Correct!, Keep it up!</p>
+            )}
+            {incorrect && (
+              <p className="incorrect">{`Incorrect!, the answer is ${correctAnswer} click on Generate to generate new similar Question`}</p>
+            )}
+
             <div class="butons">
               <div>
-                  <button onClick = { generateQuestion }>Generate</button>
-                  <button onClick = { handleSubmit } >Submit</button>
+                <button onClick={generateQuestion}>Generate</button>
+                <button onClick={handleSubmit}>Submit</button>
               </div>
-    
+
               <div>
-                <button onClick = {handleSignout}>Log Out</button>
+                <button onClick={handleSignout}>Log Out</button>
               </div>
             </div>
           </div>
         </section>
-    
+
         <section></section>
       </>
-        )
+    );
 }
 
 export default Dashboard

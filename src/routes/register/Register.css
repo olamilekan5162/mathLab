@@ -5,7 +5,7 @@
     margin: 0 auto;
 }
 
-.logo{
+.main-container-header .logo{
     padding: 1em 0;
     display: flex;
     justify-content: center;
@@ -25,11 +25,7 @@
     justify-content: center;
     gap: 1em;
     background-color: #4387ee;
-    width: 100%;
-    margin: 0 auto;
-    padding: 1em;
     text-transform: uppercase;
-    font-weight: 500;
 }
 
 .google-signup a{
@@ -37,8 +33,8 @@
     color: white;
 }
 
-.card{
-    max-width: 30px;
+.google-signup .card{
+    max-width: 50px;
     background-color: white;
 }
 
@@ -48,7 +44,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 2em 0 1em 0;
 }
 
 hr{
@@ -58,16 +53,16 @@ hr{
     background-color: rgb(194, 192, 192);
 }
 
-.text{
+.line .text{
     width: auto;
     text-align: center;
 }
 
-.main fieldset{
+.main-wrapper fieldset{
     border: none;
 }
 
-.main input{
+.main-wrapper input{
     width: 100%;
     padding: 1.5em 2em;
     margin: 1em 0;
@@ -86,13 +81,14 @@ hr{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1em 0 2em 0;
+    margin: .5em 0 1em 0;
 }
 
 .sign button{
     background-color: #054bb4;
-    padding: 1em 5em;
+    padding: 1em 2em;
     color: #fff;
+    font-size: 1.5em;
     font-weight: 800;
     border: 1px solid #054bb4;
     border-radius: .5em;
@@ -106,7 +102,7 @@ hr{
 
 .footer{
     text-align: center;
-    margin: 2em 0;
+    margin: 1em 0;
 }
 .footer a {
   text-decoration: none;
