@@ -12,12 +12,30 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 
 const Dashboard = () => {
   const {displayName} = useParams()
-  const [question, setQuestion] = useState([])
+  const [questions, setQuestions] = useState([])
   const [userAnswer, setUserAnswer] = useState("")
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
   
   const navigate = useNavigate()
+  
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+  
+const fetchQuestions = async () => {
+  try {
+      const querySnapshot = await getDocs(collection(db, "questions"));
+      const questionList = querySnapshot.docs.map((doc) => doc.data());
+      setQuestions(questionList)
+      if (questionList.length > 0){
+        setCurrentQuestion(questionList[0])
+      }
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
   
   
   const handleSignout = () =>{
@@ -31,11 +49,22 @@ const Dashboard = () => {
   }
   
   const handleNext = () => {
-    
+    const currentIndex = questions.indexOf(currentQuestion);
+    const nextIndex = currentIndex + 1;
+    if (nextIndex >= questions.length) {
+      alert("No more questions!");
+  } else {
+    setCurrentQuestion(questions[nextIndex]);
   }
+}
   
   const handleSubmit = () => {
-    
+    if (!currentQuestion) return;
+    if (userAnswer.trim() === currentQuestion.answer) {
+      alert("Correct!");
+    } else {
+      alert("Incorrect! Generating a new question...");
+    }
   }
     return(
       <>
@@ -82,11 +111,15 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              <h4>{question}</h4>
+              { currentQuestion ? (
+                <h4>{currentQuestion.question}</h4>
+                ):(
+                <p>Loading Qestion...</p>
+              )}
             </div>
             <div>
               <h1>Your Answer</h1>
-              <textarea name="text" onChange={e => setAnswer(e.target.value)}></textarea>
+              <textarea name="text" onChange={e => setUserAnswer(e.target.value)}></textarea>
             </div>
             <div class="butons">
               <div>
