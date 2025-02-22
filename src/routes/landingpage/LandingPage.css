@@ -1,137 +1,147 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-.navbar{
-    display: flex;
-    align-items: center;
-    padding: 1em;
-    border-bottom: 2px solid #c6c7c993;
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  border-bottom: 2px solid #c6c7c993;
 }
 
-.navbtn{
-    margin-left: auto;
+.navbtn {
+  margin-left: auto;
 }
 
-.navbtn a, .signbtn{
-    padding: 1em 5em;
-    color: #658cc2;
-    text-decoration: none;
-    font-weight: 800;
-    border: 1px solid rgb(240, 240, 240);
-    border-radius: 1em;
-    margin-right: 1em;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.navbtn a,
+.signbtn {
+  padding: 1em 5em;
+  color: #658cc2;
+  text-decoration: none;
+  font-weight: 800;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 1em;
+  margin-right: 1em;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.signbtn-box{
-    margin-top: 2em;
+.signbtn-box {
+  margin-top: 2em;
 }
 
-.navbtn a:focus, .navbtn a:hover{
-    border: 1px solid #054bb4;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+.navbtn a:focus,
+.navbtn a:hover {
+  border: 1px solid #054bb4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.main{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.main-body{
-    padding: 1em;
+.main-body {
+  padding: 1em;
 }
 
- h1{
-    color: #333436;
-    font-size: 50px;
-    font-weight: 800;
-    padding: .5em 0;
+h1 {
+  color: #333436;
+  font-size: 50px;
+  font-weight: 800;
+  padding: 0.5em 0;
 }
 
- p{
-    font-weight: 500;
-    padding: 1em 0;
-    font-size: 20px;
+p {
+  font-weight: 500;
+  padding: 1em 0;
+  font-size: 20px;
 }
 
-.signbtn{
-    background-color: #054bb4;
-    color: white;
+.signbtn {
+  background-color: #054bb4;
+  color: white;
 }
 
-.img2{
-    max-width: 50vw;
-    height: 70vh;
-    display: block;
-    border-bottom: 1px solid white;
-    border-bottom-right-radius: 1em;
-    border-bottom-left-radius: 1em;
+.img2 {
+  max-width: 50vw;
+  height: 70vh;
+  display: block;
+  border-bottom: 1px solid white;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
-
 
 @media (min-width: 1400px) {
-    h1{
-        font-size: 100px;
-    }
+  h1 {
+    font-size: 100px;
+  }
 
-    p{
-        font-size: 32px;
-    }
-    
-    .navbtn a, .signbtn{
-        padding: 2em 7em;
-    }
+  p {
+    font-size: 32px;
+  }
 
-    .img2{
-        width: 800px;
-        height: 100%;
-    }
+  .navbtn a,
+  .signbtn {
+    padding: 2em 7em;
+  }
+
+  .img2 {
+    width: 800px;
+    height: 100%;
+  }
 }
 
+@media (max-width: 700px) {
+  .navbar {
+    gap: 2em;
+    justify-content: center;
+  }
 
-@media (max-width: 550px) {
-   .navbtn a, .signbtn{
+  .navbtn {
+    margin-left: 0;
+  }
+
+  .navbtn a {
+    display: flex;
+  }
+
+  .navbtn a:nth-child(2) {
+    margin-top: 1em;
+  }
+
+  .navbtn a,
+  .signbtn {
     padding: 1em 2em;
-    z-index: 2;
-   }
+  }
 
-   .main{
+  .signbtn-box{
+    margin-top: 3em;
+  }
+
+  .main {
     background: url(../images/jeswin-thomas.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-blend-mode: lighten;
-    background-color: rgba(255, 255, 255,0.75);
+    background-color: rgba(245, 244, 244, 0.911);
     min-height: 100vh;
-   }
+  }
 
-   /* .overlay {
-  position: absolute;
-  top: 20vh;
-  left: 0;
-  bottom: 50%;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.75);
-  z-index: 1;
-} */
-   .main-body{
+  .main-body {
     text-align: center;
-    /* z-index: 2; */
-   }
+  }
 
-   .img2{
+  .img2 {
     display: none;
-   }
+  }
 
-   
-   .signbtn{
+  .signbtn {
     padding: 2em 5em;
-   }
+  }
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
    .navbar{
     margin-left: 0;
     gap: 2em;
@@ -141,4 +151,4 @@
    .navbtn a, .signbtn{
     margin-bottom: 1em;
    }
-}
+} */
