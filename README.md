@@ -1,7 +1,7 @@
 # **MathLab || Mathematics Made Easy**  
 
 ## **Overview**  
-MathLab is a web-based application designed to help students practice and improve their math skills. When a student answers a question incorrectly, an AI generates a similar question with different numbers and stores it in Firebase Firestore. This ensures continuous learning by reinforcing weak areas.  
+MathLab is a web-based application designed to help students practice and improve their math skills. When a student answers a question incorrectly, an AI generates a similar question with different numbers and stores it in the database. This ensures continuous learning by reinforcing weak areas.  
 
 ## **Features**  
 
@@ -13,10 +13,10 @@ MathLab is a web-based application designed to help students practice and improv
 
 ## **Technologies Used**  
 
-- **React.js** â€“ Frontend framework  
-- **Firebase Firestore** â€“ Database for storing questions  
-- **Firebase Authentication** â€“ User registration & login  
-- **OpenAI GPT-4o-mini** â€“ AI-powered question generation  
+- **React.js** Frontend framework  
+- **Firebase Firestore** Database for storing questions  
+- **Firebase Authentication** User registration & login  
+- **OpenAI GPT-4o-mini** AI-powered question generation  
 
 ## **Database Structure (Firebase Firestore)**  
 
@@ -113,9 +113,9 @@ The system sends a prompt to OpenAI instructing it to generate a math question w
 
 ## **API Usage**  
 
-- **Fetching Questions** â€“ Retrieves questions from Firebase Firestore.  
-- **Uploading Questions** â€“ Adds AI-generated questions to Firestore.  
-- **Generating New Questions** â€“ Uses OpenAI API to modify an incorrect question.  
+- **Fetching Questions** Retrieves questions from Firebase Firestore.  
+- **Uploading Questions** Adds AI-generated questions to Firestore.  
+- **Generating New Questions** Uses OpenAI API to modify an incorrect question.  
 
 ## **Simulating AI Question Generation**  
 
@@ -131,11 +131,11 @@ The system sends a prompt to OpenAI instructing it to generate a math question w
 
 ## **GitHub Repository**  
 
-ðŸ”— [GitHub Repo](https://github.com/olamilekan5162/mathLab)  
+[GitHub Repo](https://github.com/olamilekan5162/mathLab)  
 
 ## **Live Demo**  
 
-ðŸŒ [MathLab Live](https://math-lab-theta.vercel.app)  
+[MathLab Live](https://math-lab-theta.vercel.app)  
 
 ## **Contributions**  
 
