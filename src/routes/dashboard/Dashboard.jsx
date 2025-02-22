@@ -10,6 +10,11 @@ import Spinner from '../../components/Spinner';
 import { db } from "../../../firebaseConfig.js"
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
+const openai = new OpenAI({
+  apiKey: "",
+  dangerouslyAllowBrowser: true,
+});
+
 const Dashboard = () => {
   const {displayName} = useParams()
   const [questions, setQuestions] = useState([])
@@ -19,7 +24,8 @@ const Dashboard = () => {
   const [correct, setCorrect] = useState(false)
   const [incorrect, setIncorrect] = useState(false)
   const [correctAnswer, setCorrectAnswer] = useState("")
-  const [difficulty, setDifficulty] = useState("hard")
+  const [difficulty, setDifficulty] = useState("")
+  const [generating, setGenerating] = useState(false)
   
   const navigate = useNavigate()
   
@@ -41,13 +47,13 @@ const fetchQuestions = async () => {
   }
 }
 
-const uploadQuestion = async () => {
+const uploadQuestion = async (question, answer) => {
   try {
     const docRef = await addDoc(collection(db, "questions"), {
-      question: "",
-      answer: "",
-      difficulty: "",
-      topic: ""
+      question: question,
+      answer: answer,
+      difficulty: currentQuestion?.difficulty || "unknown",
+      topic: currentQuestion?.topic || "general"
     });
     console.log("Document written with ID: ", docRef.id);
   } 
@@ -56,11 +62,46 @@ const uploadQuestion = async () => {
   }
 }
 
-const generateQuestion = () => {
-  handleNext()
-  setIncorrect(false)
-  setUserAnswer("")
-}
+const generateQuestion = async () => {
+    if (!currentQuestion) return;
+    setIncorrect(false)
+    setGenerating(true);
+    try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+            { role: "developer", content: "You are a helpful assistant." 
+              
+            },
+            {
+                role: "user",
+                content: `Rewrite this math question with different numbers but keep the structure the same. Also, provide the correct answer in JSON format. no additional response, just the json format:
+      {
+        "question": "New math question",
+        "answer": "Correct answer"
+      }
+      
+      Original Question: ${currentQuestion.question}`,
+            },
+            ],
+            store: true,
+        
+      });
+      const response = completion.choices[0].message.content;
+      console.log(response)
+      const jsonResult = JSON.parse(response);
+      console.log(jsonResult)
+      if (jsonResult.question && jsonResult.answer) {
+        uploadQuestion(jsonResult.question, jsonResult.answer);
+        setCurrentQuestion({ question: jsonResult.question, answer: jsonResult.answer });
+      }
+    } catch (error) {
+      console.error("Error generating AI question:", error);
+    }
+
+    setGenerating(false);
+  
+};
   
 const handleSignout = () =>{
   signOut(auth)
@@ -94,6 +135,9 @@ const handleSubmit = () => {
   } else {
     setCorrectAnswer(currentQuestion.answer)
     setIncorrect(true)
+    setTimeout(() => {
+      setIncorrect(false)
+    }, 3000)
   }
 }
 
@@ -188,7 +232,9 @@ const handleSubmit = () => {
 
             <div class="butons">
               <div>
-                <button onClick={generateQuestion}>Generate</button>
+                <button onClick={generateQuestion}>
+                  {generating ? <Spinner loading={generating}/> : "Generate"}
+                  </button>
                 <button onClick={handleSubmit}>Submit</button>
               </div>
 
