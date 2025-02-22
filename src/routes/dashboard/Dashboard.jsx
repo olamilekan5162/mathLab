@@ -172,38 +172,57 @@ const handleSubmit = () => {
 
                   <div class="radio-button">
                     <div>
-                      <label for="child">
-                        Easy
-                        <input
-                          type="radio"
-                          id="child"
-                          name="difficulty"
-                          value="easy"
-                          onChange={(e) => setDifficulty(e.target.value)}
-                        />
-                      </label>
+                      <div>
+                        <label for="child">
+                          Easy
+                          <input
+                            type="radio"
+                            id="child"
+                            name="difficulty"
+                            value="easy"
+                            onChange={(e) => setDifficulty(e.target.value)}
+                          />
+                        </label>
+                      </div>
+                      <div>
+                        <label for="adult">
+                          Normal
+                          <input
+                            type="radio"
+                            id="adult"
+                            name="difficulty"
+                            value="normal"
+                            onChange={(e) => setDifficulty(e.target.value)}
+                          />
+                        </label>
+                      </div>
                     </div>
+
                     <div>
-                      <label for="adult">
-                        Normal
-                        <input
-                          type="radio"
-                          id="adult"
-                          name="difficulty"
-                          value="normal"
-                          onChange={(e) => setDifficulty(e.target.value)}
-                        />
-                      </label>
-                    </div>
-                    <div>
-                      <label for="senior">Hard
-                      <input type="radio" id="senior" name="difficulty" value="hard" onChange={(e) => setDifficulty(e.target.value)}/>
-                      </label>
-                    </div>
-                    <div>
-                      <label for="random">Random
-                      <input type="radio" id="random" name="difficulty" value="random" onChange={(e) => setDifficulty(e.target.value)}/>
-                      </label>
+                      <div>
+                        <label for="senior">
+                          Hard
+                          <input
+                            type="radio"
+                            id="senior"
+                            name="difficulty"
+                            value="hard"
+                            onChange={(e) => setDifficulty(e.target.value)}
+                          />
+                        </label>
+                      </div>
+                      <div>
+                        <label for="random">
+                          Random
+                          <input
+                            type="radio"
+                            id="random"
+                            name="difficulty"
+                            value="random"
+                            onChange={(e) => setDifficulty(e.target.value)}
+                          />
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -213,6 +232,9 @@ const handleSubmit = () => {
               ) : (
                 <p>Loading Qestion...</p>
               )}
+            </div>
+            <div className="topic">
+              <p>Topic:Arithmetic</p>
             </div>
             <div>
               <h1>Your Answer</h1>
@@ -230,10 +252,10 @@ const handleSubmit = () => {
             )}
 
             <div class="butons">
-              <div>
+              <div className="generate">
                 <button onClick={generateQuestion}>
-                  {generating ? <Spinner loading={generating}/> : "Generate"}
-                  </button>
+                  {generating ? <Spinner loading={generating} /> : "Generate"}
+                </button>
                 <button onClick={handleSubmit}>Submit</button>
               </div>
 
