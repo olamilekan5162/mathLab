@@ -11,8 +11,7 @@ import { db } from "../../../firebaseConfig.js"
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
 const openai = new OpenAI({
-  apiKey: "",
-  dangerouslyAllowBrowser: true,
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY
 });
 
 const Dashboard = () => {
