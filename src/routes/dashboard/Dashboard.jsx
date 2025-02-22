@@ -18,27 +18,31 @@ const Dashboard = () => {
   const [correct, setCorrect] = useState(false)
   const [incorrect, setIncorrect] = useState(false)
   const [correctAnswer, setCorrectAnswer] = useState("")
-  const [difficulty, setDifficulty] = useState("easy")
+  const [difficulty, setDifficulty] = useState("random")
   const [generating, setGenerating] = useState(false)
   
   const navigate = useNavigate()
   
 
   useEffect(() => {
-    fetchQuestions();
-  }, []);
+      fetchQuestions();
+  }, [difficulty]);
   
 const fetchQuestions = async () => {
   try {
       const querySnapshot = await getDocs(collection(db, "questions"));
       const questionList = querySnapshot.docs.map((doc) => doc.data());
-      setQuestions(questionList)
-      if (questionList.length > 0){
-        setCurrentQuestion(questionList[0])
+      let filteredQuestions = questionList
+      if (difficulty !== "random"){
+        filteredQuestions = questionList.filter((question) => question.difficulty === difficulty)
+      }
+      setQuestions(filteredQuestions)
+      if (filteredQuestions.length > 0){
+        setCurrentQuestion(filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)])
       }
   }
   catch (error) {
-    console.log(error)
+    console.error("error fetching question", error)
   }
 }
 
