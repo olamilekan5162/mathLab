@@ -101,6 +101,10 @@ textarea {
   justify-content: space-between;
 }
 
+.up-butons{
+    margin-bottom: 1em;
+}
+
 .butons button {
   padding: 1em 2em;
   font-size: 1.25em;

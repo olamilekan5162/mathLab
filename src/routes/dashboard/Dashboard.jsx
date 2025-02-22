@@ -172,7 +172,7 @@ const handleSubmit = () => {
 
                   <div class="radio-button">
                     <div>
-                      <div>
+                      <div className="up-butons">
                         <label for="child">
                           Easy
                           <input
@@ -186,7 +186,7 @@ const handleSubmit = () => {
                       </div>
                       <div>
                         <label for="adult">
-                          Normal
+                          Hard
                           <input
                             type="radio"
                             id="adult"
@@ -199,9 +199,9 @@ const handleSubmit = () => {
                     </div>
 
                     <div>
-                      <div>
+                      <div className="up-butons">
                         <label for="senior">
-                          Hard
+                          Normal
                           <input
                             type="radio"
                             id="senior"
