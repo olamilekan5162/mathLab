@@ -107,7 +107,7 @@ const Register = () => {
                 </fieldset>
 
                 <div className="sign">
-                    <p>By clicking Sign Up, you agree to our Terms</p>
+                    <p className="agree">By clicking Sign Up, you agree to our Terms</p>
                     <button type="submit">
                       {loading ? <Spinner loading={loading}/> : "Sign up"}</button>
                 </div>

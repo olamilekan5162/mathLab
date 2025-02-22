@@ -82,9 +82,15 @@ hr{
     justify-content: space-between;
     align-items: center;
     margin: .5em 0 1em 0;
+    gap: 2em;
+}
+
+.sign .agree{
+    width: 50%;
 }
 
 .sign button{
+    flex-grow: 1;
     background-color: #054bb4;
     padding: 1em 2em;
     color: #fff;
@@ -106,4 +112,46 @@ hr{
 }
 .footer a {
   text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .main-container{
+        width: 60%;
+    }
+}
+
+@media (max-width: 750px) {
+    .main-container{
+        width: 70%;
+    }
+
+    .sign button{
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-container{
+        width: 70%;
+    }
+
+    .google-signup{
+        font-size: 10px;
+    }
+
+    .google-signup .card{
+        width: 25px;
+    }
+
+    hr{
+        height: 1px;
+    }
+
+    .contact{
+        display: block;
+    }
+
+    .sign button{
+        font-size: 1em;
+    }
 }
