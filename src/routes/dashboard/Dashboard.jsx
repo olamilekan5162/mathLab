@@ -191,7 +191,7 @@ const handleSubmit = () => {
                             type="radio"
                             id="adult"
                             name="difficulty"
-                            value="normal"
+                            value="hard"
                             onChange={(e) => setDifficulty(e.target.value)}
                           />
                         </label>
@@ -206,7 +206,7 @@ const handleSubmit = () => {
                             type="radio"
                             id="senior"
                             name="difficulty"
-                            value="hard"
+                            value="normal"
                             onChange={(e) => setDifficulty(e.target.value)}
                           />
                         </label>
@@ -234,7 +234,11 @@ const handleSubmit = () => {
               )}
             </div>
             <div className="topic">
-              <p>Topic:Arithmetic</p>
+              {currentQuestion ? (
+                <p>Topic: {currentQuestion.topic}</p>
+              ) : (
+                <p> </p>
+              )}
             </div>
             <div>
               <h1>Your Answer</h1>
