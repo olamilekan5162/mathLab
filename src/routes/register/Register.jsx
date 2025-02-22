@@ -3,7 +3,7 @@ import Mathnw from '../../assets/Mathnw.png'
 import Google from '../../assets/google.svg'
 import {Link} from "react-router-dom"
 import {useState} from "react"
-import { auth } from "../../../firebaseConfig.js"
+import { auth } from "../../clients/firebaseConfig.js"
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../../components/Spinner';

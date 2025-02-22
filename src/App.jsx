@@ -6,18 +6,27 @@ import Register from "../src/routes/register/Register"
 
 const App = () => {
   
-  const router = createBrowserRouter(createRoutesFromElements(
-    <>
-    <Route path="/" element={<LandingPage />}/>
-    <Route path="/dashboard/:displayName" element={<Dashboard />}/>
-    <Route path="/login" element={<Login />}/>
-    <Route path="/register" element={<Register />}/>
-    </>
-    ));
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LandingPage />,
+    },
+    {
+      path: "login",
+      element: <Login />
+    },
+    {
+      path: "register",
+      element: <Register />
+    },
+    {
+      path: "dashboard/:displayName",
+      element: <Dashboard />
+    },
+    
+    ])
   return (
-      <>
         <RouterProvider router={router}/>
-      </>
   )
 }
 

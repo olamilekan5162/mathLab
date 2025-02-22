@@ -1,18 +1,13 @@
-import OpenAI from "openai"
 import {useState, useEffect} from 'react'
 import Mathnw from '../../assets/Mathnw.png'
 import Avatar from '../../assets/avatar.svg'
 import './Dashboard.css'
-import { auth } from "../../../firebaseConfig.js"
 import { signOut } from "firebase/auth"
 import { useNavigate, useParams } from 'react-router-dom'
 import Spinner from '../../components/Spinner';
-import { db } from "../../../firebaseConfig.js"
+import { db, auth } from "../../clients/firebaseConfig.js"
+import { openai } from "../../clients/openaiConfig.js"
 import { collection, getDocs, addDoc } from "firebase/firestore";
-
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY
-});
 
 const Dashboard = () => {
   const {displayName} = useParams()
@@ -23,14 +18,15 @@ const Dashboard = () => {
   const [correct, setCorrect] = useState(false)
   const [incorrect, setIncorrect] = useState(false)
   const [correctAnswer, setCorrectAnswer] = useState("")
-  const [difficulty, setDifficulty] = useState("")
+  const [difficulty, setDifficulty] = useState("easy")
   const [generating, setGenerating] = useState(false)
   
   const navigate = useNavigate()
   
+
   useEffect(() => {
     fetchQuestions();
-  }, [difficulty]);
+  }, []);
   
 const fetchQuestions = async () => {
   try {

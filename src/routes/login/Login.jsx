@@ -1,6 +1,6 @@
 import {useState} from "react"
 import Mathnw from '../../assets/Mathnw.png'
-import { auth } from "../../../firebaseConfig.js"
+import { auth } from "../../clients/firebaseConfig.js"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../../components/Spinner';
