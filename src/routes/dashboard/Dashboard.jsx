@@ -237,7 +237,7 @@ const handleSubmit = () => {
               {currentQuestion ? (
                 <p>Topic: {currentQuestion.topic}</p>
               ) : (
-                <p> </p>
+                <p>General</p>
               )}
             </div>
             <div>
