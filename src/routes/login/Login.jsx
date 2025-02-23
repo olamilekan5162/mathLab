@@ -53,8 +53,11 @@ const Login = () => {
                                 </div>
                             </div>
         
-                            <div className="login-btn">
-                                <button type="submit">{loading ? <Spinner loading={loading}/> : "Log in"}</button>
+                            <div>
+                                <div className="login-btn">
+                                    <button type="submit">{loading ? <Spinner loading={loading}/> : "Log in"}</button>
+                                </div>
+                                <p>Don't have an account? <a href="#">Sign Up</a></p>
                             </div>
                         </div>
                     </form>
