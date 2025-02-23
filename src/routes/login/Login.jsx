@@ -1,4 +1,5 @@
 import {useState} from "react"
+import {Link} from "react-router-dom"
 import Mathnw from '../../assets/Mathnw.png'
 import { auth } from "../../clients/firebaseConfig.js"
 import { signInWithEmailAndPassword } from "firebase/auth"
@@ -57,7 +58,7 @@ const Login = () => {
                                 <div className="login-btn">
                                     <button type="submit">{loading ? <Spinner loading={loading}/> : "Log in"}</button>
                                 </div>
-                                <p>Don't have an account? <a href="#">Sign Up</a></p>
+                                <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
                             </div>
                         </div>
                     </form>
