@@ -256,7 +256,7 @@ const handleSubmit = () => {
             )}
 
             <div class="butons">
-              <div className="generate">
+              <div>
                 <button onClick={generateQuestion}>
                   {generating ? <Spinner loading={generating} /> : "Generate"}
                 </button>
